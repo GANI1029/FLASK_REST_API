@@ -12,15 +12,18 @@ class helloworld(Resource):
 
         return {'message':'Hello World post request'}
 
-user_dict ={'tom' :{  'user_name': 'tom',  'user_age': 18 },
-            'jerry' : {  'user_name': 'jerry',  'user_age': 10 } 
-             }
+
     
 class user(Resource):
     def get(self ,name):
-        print(name)
-        return user_dict[name]
 
+        return user_dict['gani']
+    
+user_dict = {
+    'tom': {'user_name': 'Tom', 'user_age': 18},
+    'jerry': {'user_name': 'Jerry', 'user_age': 10},
+    'gani': {'user_name': 'gani', 'user_age': 25},  
+}
     
 api.add_resource(helloworld,'/helloworld')
 
@@ -28,5 +31,4 @@ api.add_resource(user,'/user/<string:name>')
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 
