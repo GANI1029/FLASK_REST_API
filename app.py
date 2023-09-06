@@ -11,17 +11,20 @@ class helloworld(Resource):
     def post(self):
 
         return {'message':'Hello World post request'}
+
+user_dict ={'tom' :{  'user_name': 'tom',  'user_age': 18 },
+            'jerry' : {  'user_name': 'jerry',  'user_age': 10 } 
+             }
     
 class user(Resource):
-    def get(self ,name,age):
-        return {'user_name': name , 'user_age': age}
-    def post(self):
+    def get(self ,name):
+        print(name)
+        return user_dict[name]
 
-        return {'message':'user post request'}
     
 api.add_resource(helloworld,'/helloworld')
 
-api.add_resource(user,'/user/<string:name>/<int:age>')
+api.add_resource(user,'/user/<string:name>')
 
 if __name__ == '__main__':
     app.run(debug=True)
