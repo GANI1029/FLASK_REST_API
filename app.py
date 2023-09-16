@@ -2,8 +2,7 @@ from flask import Flask
 from flask_restful import Api ,Resource
 
 app = Flask(__name__)
-
-api = Api(app)
+api = Api(app) 
 
 class helloworld(Resource):
     def get(self):
@@ -11,9 +10,7 @@ class helloworld(Resource):
     def post(self):
 
         return {'message':'Hello World post request'}
-
-
-    
+ 
 class user(Resource):
     def get(self ,name):
 
