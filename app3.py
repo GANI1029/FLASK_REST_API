@@ -26,6 +26,8 @@ def abort_if_user_exist(ID):
     if ID in user_dict:
         abort(404,message="user already exist")
 
+
+
 class user(Resource):
     def get(self ,ID):
         abort_if_user_not_listed(ID)
@@ -35,6 +37,10 @@ class user(Resource):
         args = user_put_ars.parse_args()
         user_dict[ID] = args
         return user_dict[ID]
+    def delete(self ,ID):
+        abort_if_user_not_listed(ID)
+        del user_dict[ID]
+        return {'user deleted': ID}
     
 api.add_resource(user,'/user/<int:ID>')
 if __name__ == '__main__':
